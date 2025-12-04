@@ -12,7 +12,9 @@ interface SiswaDao {
     @Query("SELECT * FROM tblSiswa ORDER BY nama ASC")
     fun getAllSiswa(): Flow<List<Siswa>>
 
+    @Query("SELECT * FROM tblSiswa WHERE id = :id")
+    fun getSiswa(id: Int): Flow<Siswa?>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertSiswa(siswa: Siswa)
 }
-
