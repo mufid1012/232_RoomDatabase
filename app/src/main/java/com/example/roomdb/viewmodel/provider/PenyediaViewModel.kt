@@ -9,6 +9,7 @@ import com.example.roomdb.viewmodel.DetailViewModel
 import com.example.roomdb.viewmodel.HomeViewModel
 import com.example.roomdb.viewmodel.EntryViewModel
 import androidx.lifecycle.createSavedStateHandle
+import com.example.roomdb.viewmodel.EditViewModel
 
 object PenyediaViewModel {
 
@@ -32,6 +33,16 @@ object PenyediaViewModel {
         initializer {
             val savedStateHandle = this.createSavedStateHandle()
             DetailViewModel(
+                savedStateHandle = savedStateHandle,
+                repositoriSiswa = aplikasiSiswa().container.repositoriSiswa
+
+            )
+        }
+
+        // Edit (WAJIB)
+        initializer {
+            val savedStateHandle = this.createSavedStateHandle()
+            EditViewModel(
                 savedStateHandle = savedStateHandle,
                 repositoriSiswa = aplikasiSiswa().container.repositoriSiswa
             )
