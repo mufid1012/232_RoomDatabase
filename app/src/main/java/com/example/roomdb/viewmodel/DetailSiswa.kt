@@ -24,3 +24,15 @@ fun DetailSiswa.toSiswa(): Siswa =
         alamat = alamat,
         telpon = telpon
     )
+fun Siswa.toUIStateSiswa(isValid: Boolean = false): UIStateSiswa {
+    return UIStateSiswa(
+        detailSiswa = DetailSiswa(
+            id = id,
+            nama = nama,
+            alamat = alamat,
+            telpon = telpon
+        ),
+        isEntryValid = isValid
+    )
+}
+
