@@ -1,4 +1,4 @@
-<img width="271" height="571" alt="image" src="https://github.com/user-attachments/assets/41396182-e8b5-4be5-80a8-4564f584bc0d" /><img width="271" height="571" alt="image" src="https://github.com/user-attachments/assets/0189e1ff-ff99-4f7e-bc3c-67829769e451" />1. Halaman Home
+1. Halaman Home
 <img width="297" height="593" alt="image" src="https://github.com/user-attachments/assets/d832ef89-c824-44f1-8316-2fd76fe9ab4a" />
 
 2. Form Tambah Siswa
