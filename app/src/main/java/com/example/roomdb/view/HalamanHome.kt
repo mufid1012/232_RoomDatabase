@@ -1,5 +1,6 @@
 package com.example.roomdb.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +43,7 @@ import androidx.compose.ui.text.style.TextAlign
 @Composable
 fun HomeScreen(
     navigateToItemEntry: () -> Unit,
+    navigateToItemDetail: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -74,6 +76,7 @@ fun HomeScreen(
 
         BodyHome(
             itemSiswa = uiStateSiswa.listSiswa,
+            onSiswaClick = { id -> navigateToItemDetail(id) },
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
@@ -84,6 +87,8 @@ fun HomeScreen(
 @Composable
 fun BodyHome(
     itemSiswa: List<Siswa>,
+    //edit 3 tambahkan parameter onclick
+    onSiswaClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ){
     Column(
@@ -100,6 +105,7 @@ fun BodyHome(
         } else {
             ListSiswa(
                 itemSiswa = itemSiswa,
+                onSiswaClick = { siswa -> onSiswaClick(siswa.id) },
                 modifier = Modifier.padding(horizontal = 8.dp)   // DIBENERIN
             )
         }
@@ -109,6 +115,8 @@ fun BodyHome(
 @Composable
 fun ListSiswa(
     itemSiswa: List<Siswa>,
+    //tambahkan parameter onclick
+    onSiswaClick: (Siswa) -> Unit,
     modifier: Modifier = Modifier
 ){
     LazyColumn(modifier = Modifier){
@@ -116,6 +124,7 @@ fun ListSiswa(
                 person -> DataSiswa(
             siswa = person,
             modifier = Modifier.padding(8.dp)   // DIBENERIN
+                .clickable{ onSiswaClick(person) }
         )
         }
     }
