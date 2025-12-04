@@ -11,6 +11,9 @@ interface RepositoriSiswa {
 
     // ➕ TAMBAHKAN INI
     suspend fun deleteSiswa(siswa: Siswa)
+
+    suspend fun updateSiswa(siswa: Siswa)
+
 }
 
 class OfflineRepositoriSiswa(
@@ -29,4 +32,7 @@ class OfflineRepositoriSiswa(
     // ➕ TAMBAHKAN INI
     override suspend fun deleteSiswa(siswa: Siswa) =
         siswaDAO.deleteSiswa(siswa)
+
+    override suspend fun updateSiswa(siswa: Siswa) =
+        siswaDAO.updateSiswa(siswa)
 }
