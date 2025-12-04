@@ -7,16 +7,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.ui.Modifier
 import androidx.compose.material3.ExperimentalMaterial3Api
-
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 
 import com.example.roomdb.view.route.DestinasiHome
 import com.example.roomdb.view.route.DestinasiEntry
 import com.example.roomdb.view.route.DestinasiDetailSiswa
+import com.example.roomdb.view.route.DestinasiEditSiswa
+
 import com.example.roomdb.view.HomeScreen
 import com.example.roomdb.view.uicontroller.EntrySiswaScreen
 import com.example.roomdb.view.DetailSiswaScreen
+import com.example.roomdb.view.EditSiswaScreen
 
 @Composable
 fun SiswaApp(
@@ -60,7 +62,7 @@ fun HostNavigasi(
             )
         }
 
-        // DETAIL (FIX)
+        // DETAIL
         composable(
             route = "${DestinasiDetailSiswa.route}/{${DestinasiDetailSiswa.itemIdArg}}",
             arguments = listOf(
@@ -68,8 +70,23 @@ fun HostNavigasi(
             )
         ) {
             DetailSiswaScreen(
-                navigateToEditItem = {},
+                navigateToEditItem = { id ->
+                    navController.navigate(DestinasiEditSiswa.buatRouteDenganId(id))
+                },
                 navigateBack = { navController.popBackStack() }
+            )
+        }
+
+        // EDIT ← INI YANG BELUM ADA DAN WAJIB!
+        composable(
+            route = "${DestinasiEditSiswa.route}/{${DestinasiEditSiswa.itemIdArg}}",
+            arguments = listOf(
+                navArgument(DestinasiEditSiswa.itemIdArg) { type = NavType.IntType }
+            )
+        ) {
+            EditSiswaScreen(
+                navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.popBackStack() }
             )
         }
     }
